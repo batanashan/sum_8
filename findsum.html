@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adding</title>
+    <script src="react.development.js"></script>
+    <script src="react-dom.development.js"></script>
+    <script src="babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        const Sum = () =>{
+            const[data,setData] = React.useState({});
+            const[res,setRes] = React.useState(0);
+            const fnChange=(eve)=>{
+             const {id,value}= eve.target;
+             setData({
+                ...data,
+                [id]:value
+             })
+            }
+            const fnClick=()=>{
+                const {n1,n2} = data
+                const sum = parseInt(n1)+parseInt(n2)
+                setRes(sum)
+            }
+            return <div>
+                <p>No:1
+                <input id = "n1" type = "number" onChange={fnChange}/>
+                </p>
+                <p>No:2
+                <input id = "n2" type = "number"onChange={fnChange}/>
+                </p>
+                <button onClick={fnClick}>sum</button>
+                <h1>{res}</h1>
+                </div>
+        }
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(<Sum/>)
+    </script>
+</body>
+</html>
